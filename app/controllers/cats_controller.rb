@@ -9,10 +9,11 @@ class CatsController < ApplicationController
   end
 
   def create
-    cat = Cat.new(cat_params)
-    if cat.save
+    @cat = Cat.new(cat_params)
+    if @cat.save
       redirect_to cat
     else
+      flash.now[:notice] = @cat.errors.full_messages
       render :new
     end
   end
@@ -21,6 +22,7 @@ class CatsController < ApplicationController
     if @cat.update(cat_params)
       redirect_to @cat
     else
+      flash.now[:notice] = @cat.errors.full_messages
       render :edit
     end
   end
