@@ -12,8 +12,9 @@
   <div class="form-group">
     <label>Color:</label>
     <select name="cat[color]" class="form-control">
+      <option value="" disabled selected>Select a color</option>
       <% Cat::COLORS.each do |color| %>
-        <option value="<%= color %>" <%= @cat.color == color ? "selected" : "" %> ><%= color %></option>
+        <option value="<%= color %>" <%= @cat.color == color ? "selected" : "" %> ><%= color.capitalize %></option>
       <% end %>
     </select>
   </div>
